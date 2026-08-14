@@ -1,36 +1,12 @@
-if (!window.storage) {
-  window.storage = {
-    async get(key, shared) {
-      const raw = localStorage.getItem(key);
-      if (raw === null) throw new Error("not found");
-      return { key, value: raw, shared: !!shared };
-    },
-    async set(key, value, shared) {
-      localStorage.setItem(key, value);
-      return { key, value, shared: !!shared };
-    },
-    async delete(key, shared) {
-      localStorage.removeItem(key);
-      return { key, deleted: true, shared: !!shared };
-    },
-    async list(prefix, shared) {
-      const keys = Object.keys(localStorage).filter(
-        (k) => !prefix || k.startsWith(prefix)
-      );
-      return { keys, prefix, shared: !!shared };
-    },
-  };
-}
-
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
+import App from "./App-2.jsx";
 
 function showError(msg) {
   const root = document.getElementById("root");
   if (root) {
     root.innerHTML =
-      '<div style="direction:rtl;font-family:sans-serif;padding:20px;color:#B5482F;white-space:pre-wrap;font-size:14px;">حدث خطأ:\n\n' +
+      '<div style="direction:rtl;font-family:sans-serif;padding:20px;color:#B5482F;white-space:pre-wrap;font-size:14px">' +
       msg +
       "</div>";
   }
@@ -67,7 +43,7 @@ class ErrorBoundary extends React.Component {
             fontSize: 14,
           }}
         >
-          حدث خطأ بالتطبيق:{"\n\n"}
+          حدث خطأ بالتطبيق{"\n\n"}
           {String(this.state.error && this.state.error.message)}
           {"\n\n"}
           {String(this.state.error && this.state.error.stack)}
