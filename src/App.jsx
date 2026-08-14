@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 // ---- Design tokens ----
 // "ink" doubles as both a dark accent (buttons/header backgrounds) and
