@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App-5.jsx";
+import App from "./App-6.jsx";
 
 function showError(msg) {
   const root = document.getElementById("root");
@@ -22,42 +22,4 @@ window.addEventListener("unhandledrejection", (e) => {
   );
 });
 
-class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { error: null };
-  }
-  static getDerivedStateFromError(error) {
-    return { error };
-  }
-  render() {
-    if (this.state.error) {
-      return (
-        <div
-          style={{
-            direction: "rtl",
-            fontFamily: "sans-serif",
-            padding: 20,
-            color: "#B5482F",
-            whiteSpace: "pre-wrap",
-            fontSize: 14,
-          }}
-        >
-          حدث خطأ بالتطبيق{"\n\n"}
-          {String(this.state.error && this.state.error.message)}
-          {"\n\n"}
-          {String(this.state.error && this.state.error.stack)}
-        </div>
-      );
-    }
-    return this.props.children;
-  }
-}
-
-ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <ErrorBoundary>
-      <App />
-    </ErrorBoundary>
-  </React.StrictMode>
-);
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
